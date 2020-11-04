@@ -1,6 +1,6 @@
 $(document).ready(function (){
 // Icon set
-const icons = [
+const iconsArray = [
   {
     name: 'cat',
     prefix: 'fa-',
@@ -99,20 +99,28 @@ const icons = [
   },
 ];
 
+
+const coloredIcons = [
+    'blue',
+    'orange',
+    'purple'
+];
+
 // icons container
 const containerIcons = $('.icons');
 
-// show icon
-showIcon(icons, containerIcons);
+// show icons
+showIcon(iconsArray, containerIcons);
 
-
+// show colored icons
+const colorIcons = colorIcon(iconsArray, coloredIcons); 
 
 }) // <--- end ready
 
 // FUNZIONI
 // show icons function
-function showIcon(icons, containerIcons) {
-  icons.forEach((icon) => {
+function showIcon(iconsArray, containerIcons) {
+  iconsArray.forEach((icon) => {
     
     const {family, prefix, name} = icon;
 
@@ -125,4 +133,29 @@ function showIcon(icons, containerIcons) {
      containerIcons.append(html);
 
   });
-}
+};
+
+
+// colorIcon
+function colorIcon(iconsArray, coloredIcons) {
+  // trovare i type e associarne il colore
+  const types = typeFinder(iconsArray);
+  console.log(types);
+  
+}; // end function
+
+
+
+// finder type
+function typeFinder(iconsArray) {
+
+  const types = [];
+
+  iconsArray.forEach((icon) => {
+    if (! types.includes(icon.type)) {
+      types.push(icon.type);
+    }
+  });
+
+  return types;
+}; // end function 
