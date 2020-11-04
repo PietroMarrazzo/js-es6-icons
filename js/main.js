@@ -138,10 +138,24 @@ function showIcon(iconsArray, containerIcons) {
 
 // colorIcon
 function colorIcon(iconsArray, coloredIcons) {
-  // trovare i type e associarne il colore
+  // trovare i type
   const types = typeFinder(iconsArray);
-  console.log(types);
   
+  
+
+  // associare i colori
+  const colored = iconsArray.map((icon) => {
+
+    const indexType = types.indexOf(icon.type);
+
+    return {
+      ...icon,
+      color: coloredIcons[indexType]
+    }
+  });
+
+
+
 }; // end function
 
 
