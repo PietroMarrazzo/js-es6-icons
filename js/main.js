@@ -109,8 +109,8 @@ $(document).ready(function (){
   // icons container
   const containerIcons = $('.icons');
 
-  // show icons
-  showIcon(iconsArray, containerIcons);
+  // show icons b&w
+  // showIcon(iconsArray, containerIcons);
 
   // show colored icons
   const colorIcons = colorIcon(iconsArray, colors); 
@@ -118,6 +118,8 @@ $(document).ready(function (){
   showIcon(colorIcons, containerIcons);
 
 
+  // filter
+  
 
 
 }) // <--- end ready
