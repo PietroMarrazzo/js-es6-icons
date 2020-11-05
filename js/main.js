@@ -119,7 +119,11 @@ $(document).ready(function (){
 
 
   // filter
-  
+  const select = $('#type');
+  const type = typeFinder(icons);
+
+  // generatore opzioni scelta del filtro
+  genOpt(type, select);
 
 
 }) // <--- end ready
@@ -182,3 +186,12 @@ function typeFinder(iconsArray) {
 
   return types;
 }; // end function 
+
+
+
+//  generatore options filter
+function genOpt(type, select) {
+  type.forEach((opt) => {
+      select.append(`<option value="${opt}">${opt}</option>`)
+  });
+};
