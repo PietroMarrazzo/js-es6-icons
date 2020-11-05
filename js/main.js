@@ -120,17 +120,31 @@ $(document).ready(function (){
 
   // filter
   const select = $('#type');
-  const type = typeFinder(icons);
+  const type = typeFinder(iconsArray);
 
   // generatore opzioni scelta del filtro
   genOpt(type, select);
 
+  // nascondere/mostrare icone in base al filtro
+  select.change(() => {
+    const selected = select.val();
+
+    const filteredIcons = filterIcons(colorIcons, selected);
+
+    showIcon(filteredIcons, containerIcons)
+  })
+  
+
+  
 
 }) // <--- end ready
 
 // FUNZIONI
 // show icons function
 function showIcon(array, container) {
+
+  container.html('');
+
   array.forEach((icon) => {
     
     const {family, prefix, name, color} = icon;
@@ -192,6 +206,21 @@ function typeFinder(iconsArray) {
 //  generatore options filter
 function genOpt(type, select) {
   type.forEach((opt) => {
-      select.append(`<option value="${opt}">${opt}</option>`)
+      select.append(`<option value="${opt}">${opt}</option>`);
   });
-};
+}; // end function
+
+
+// filter icons display
+function filterIcons(colorIcons, selected) {
+
+  if (selected === 'all') {
+    return colorIcons;
+  }
+
+  const filtered = colorIcons.filter((icon) => {
+    return icon.type === selected;
+  });
+
+  return filtered;
+}
